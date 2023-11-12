@@ -1,0 +1,6 @@
+channels:
+  - defaults
+dependencies:
+  - jupyter
+  - opencv
+  - matplotlib
