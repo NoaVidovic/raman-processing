@@ -1,0 +1,37 @@
+We developed an automated process for baseline correction
+based on the noise median method (NMM) by Friedrichs (1995),
+which was developed for use with nuclear magnetic resonance
+data. As such, the method had to be adapted slightly to be
+useful for Raman spectrum data. The original NMM estimates
+the baseline at each sampled point by finding the median value
+of the local minima and maxima within a window of some width W
+around the sampled point, and then convolving the median values
+with a normalized Gaussian of some width $\sigma$. This method works
+well if the number of real extrema is negligible compared to the number
+of extrema that are a product of noise, which is not a good assumption
+for our dataset. We therefore introduced another parameter, P,
+that is the percentile of extrema taken into consideration when
+taking the median. For instance, for $P=80$, only extrema smaller
+than the 80th percentile extremum count towards the median. This
+works best in areas where the signal dominates over noise, with
+real maxima forming about (100-P)% of the total number of extrema
+within the window. For areas where noise dominates, it biases
+the estimated baseline slightly downward. Regarding the points
+at the spectrum boundaries, the original NMM covers two cases -
+one where the noise level at one end is about equal to the noise
+level at the other end (which does not apply in our dataset),
+and another where the median values for the boundary points
+(the points within W/2 of the spectrum boundaries) are set equal
+to the value calculated for the point W/2 (or N-W/2, where N is
+the total number of points), thereby estimating the baselines as
+constant for the first and last W/2 points. This is a good
+estimate for data in which W << N, but that is not the case
+for the values of W that proved optimal in our dataset. We instead
+chose to estimate the baseline around these boundary points such that
+the value at point number A < W/2 is calculated from the window
+between points number 1 and A+W/2, and analogously for points at the
+higher bound.
+
+
+
+[1] Friedrichs, M.S. A model-free algorithm for the removal of baseline artifacts. J Biomol NMR 5, 147–153 (1995). https://doi.org/10.1007/BF00208805
