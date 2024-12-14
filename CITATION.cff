@@ -1,0 +1,9 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Noa
+  given-names: Vidović
+orcid: https://orcid.org/0009-0001-5581-9887
+title:NoaVidovic/raman-processing: Raman Spectrum Processing
+version: v0.0.1
+date-released: 2024-12-14
